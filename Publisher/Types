@@ -1,0 +1,20 @@
+#ifndef __TYPES_H__
+#define __TYPES_H__
+
+#include <cmath>
+#include <cassert>
+
+using index = std::size_t;
+using scalar = float;
+
+template<typename T>
+T module(const T &s) {
+    return s > 0 ? s : -s;
+}
+
+template<typename T, typename U>
+bool equal(const T &a, const U &b, scalar tol = 1e-6) {
+    return module(b - a) < tol;
+}
+
+#endif
