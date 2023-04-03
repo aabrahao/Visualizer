@@ -20,6 +20,12 @@ set(PROJECT_SOURCES
         MainWindow.h
         GraphicsView.cpp
         GraphicsView.h
+        SceneBuilder.cpp
+        SceneBuilder.h
+        Logger.cpp
+        Logger.h
+        Json.cpp
+        Json.h
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)

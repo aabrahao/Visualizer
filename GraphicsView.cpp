@@ -1,15 +1,5 @@
 #include "GraphicsView.h"
-
-QString sample() {
-    return QString("total 52\n"
-                   " rw-rw-r-- 1 bilac bilac  1830 Mar 25 22:06 CMakeLists.txt\n"
-                   "-rw-rw-r-- 1 bilac bilac 27151 Mar 25 08:17 CMakeLists.txt.user\n"
-                   "-rw-rw-r-- 1 bilac bilac   472 Mar 25 22:38 GraphicsView.cpp\n"
-                   "-rw-rw-r-- 1 bilac bilac   359 Mar 25 22:38 GraphicsView.h\n"
-                   "-rw-rw-r-- 1 bilac bilac   202 Mar 25 08:18 main.cpp\n"
-                   "-rw-rw-r-- 1 bilac bilac  2131 Mar 25 22:40 MainWindow.cpp\n"
-                   "-rw-rw-r-- 1 bilac bilac   649 Mar 25 22:24 MainWindow.h");
-};
+#include "Logger.h"
 
 GraphicsView::GraphicsView(QGraphicsScene *scene)
     : QGraphicsView(scene),
@@ -29,7 +19,7 @@ void GraphicsView::resizeEvent(QResizeEvent *event) {
 void GraphicsView::drawForeground(QPainter *painter, const QRectF &rect) {
     painter->setPen(m_color);
     painter->setFont(m_font);
-    painter->drawText(rect, sample());
+    painter->drawText(rect, logger().messages());
 }
 
 QRectF GraphicsView::visibleArea() const {

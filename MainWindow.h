@@ -7,6 +7,7 @@
 #include <QGraphicsItem>
 
 #include "GraphicsView.h"
+#include "SceneBuilder.h"
 
 class MainWindow : public QMainWindow {
     Q_OBJECT
@@ -20,11 +21,13 @@ public:
     void buildScene();
     QGraphicsScene *scene() { return m_scene; }
     GraphicsView *view() { return m_view; }
+    SceneBuilder *builder() { return m_builder; }
 protected:
     void closeEvent(QCloseEvent *event) override;
  private:
     QGraphicsScene *m_scene;
     GraphicsView *m_view;
+    SceneBuilder *m_builder;
  };
 
 #endif // MAINWINDOW_H
