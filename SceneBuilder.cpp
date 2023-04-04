@@ -51,17 +51,17 @@ void SceneBuilder::read(const QJsonObject &object) {
     }
     auto type = object["object"].toString();
     if (type == "log")
-        logger() << value<QString>(object, "message") << Qt::endl;
+        logger() << value<QString>(object, "text") << Qt::endl;
     else if (type == "line") {
         auto x = values<float>(object,"x");
         auto y = values<float>(object,"y");
         auto c = color(object);
-        auto t = value<int>(object,"thickness");
+        auto s = value<int>(object,"size");
         auto n = x.size();
         if (n < 2)
             logger() << "Ops, json line has to have at least two points" << Qt::endl;
         if (n == 2)
-            scene()->addLine(x[0], y[0], x[1], y[1], QPen(c, t));
+            scene()->addLine(x[0], y[0], x[1], y[1], QPen(c, s));
         else {
             QPainterPath path;
             auto ix = x.begin();
@@ -70,10 +70,10 @@ void SceneBuilder::read(const QJsonObject &object) {
             for( ++ix, ++iy; ix != x.end() && iy != y.end(); ++ix, ++iy)
                 path.lineTo(*ix, *iy);
             auto lines = scene()->addPath(path);
-            lines->setPen(QPen(c,t));
+            lines->setPen(QPen(c, s));
         }
     }
-    else if (type == "point") {
+    else if (type == "marker") {
         auto x = values<float>(object,"x");
         auto y = values<float>(object,"y");
         auto c = color(object);
@@ -94,13 +94,13 @@ void SceneBuilder::read(const QJsonObject &object) {
         box->setPos(x, y);
         box->setRotation(a);
     }
-    else if (type == "text") {
+    else if (type == "label") {
         auto x = value<float>(object,"x");
         auto y = value<float>(object,"y");
         auto c = color(object);
         auto a = value<float>(object, "angle");
         auto s = value<float>(object, "size");
-        auto t = value<QString>(object, "content");
+        auto t = value<QString>(object, "text");
         auto text = scene()->addSimpleText(t, QFont("Arial", s));
         text->setPos(x, y);
         text->setRotation(a);

@@ -1,12 +1,12 @@
 {
     "version": 0.0,
     "objects" : [
-        {"object": "log", "message": "Start creating the sene..."},
-        {"object": "line", "x" : [0, 0, -30, 50, -100], "y" : [0, 30, -40, -100, 0], "color" : [0, 0, 1],  "thickness" : 1},
-        {"object": "point", "x" : [0, 0, -30, 50, -100], "y" : [0, 30, -40, -100, 0], "color" : [0, 1, 1, 0.25],  "size" : 10},
-        {"object": "text", "x" : 0, "y" : 0, "angle": 0, "size" : 15, "color" : [1, 0, 0, 0.5], "content" : "Hello world!"},
+        {"object": "log", "text": "Start creating the sene..."},
+        {"object": "line", "x" : [0, 0, -30, 50, -100], "y" : [0, 30, -40, -100, 0], "color" : [0, 0, 1],  "size" : 1},
+        {"object": "marker", "x" : [0, 0, -30, 50, -100], "y" : [0, 30, -40, -100, 0], "color" : [0, 1, 1, 0.25],  "size" : 10},
+        {"object": "label", "x" : 0, "y" : 0, "angle": 0, "size" : 15, "color" : [1, 0, 0, 0.5], "text" : "Hello world!"},
         {"object": "box", "x" : 50, "y" : 50, "angle" : 45, "width" : 30,  "heigth" : 40, "color" : [1, 0, 0]},
-        {"object": "box", "x" : 0, "y" : 0, "angle" : 0, "width" : 30,  "heigth" : 80, "color" : [1, 0, 0, 0.1]},
-        {"object": "log", "message": "Done ,bye!"}
+        {"object": "box", "x" : 0, "y" : 0, "angle" : 0, "width" : 30,  "heigth" : 80, "color" : [0, 0, 0, 0.5]},
+        {"object": "log", "text": "Done ,bye!"}
     ]
 }

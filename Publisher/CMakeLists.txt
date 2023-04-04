@@ -11,8 +11,13 @@ add_executable(${PROJECT_NAME}
         main.cpp
         Point.cpp
         Point.h
-        Vector
-        Types
+        Color.cpp 
+        Color.h
+        Properties
+        Object.cpp
+        Object.h  
+        Visualizer.cpp 
+        Visualizer.h      
 )
 
 #target_link_libraries(${PROJECT_NAME} PRIVATE Boost::boost)
