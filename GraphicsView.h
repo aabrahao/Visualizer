@@ -14,6 +14,7 @@ public:
     QRectF visibleArea() const;
 protected:
     void resizeEvent(QResizeEvent *event) override;
+    void drawBackground(QPainter *painter, const QRectF &rect) override;
     void drawForeground(QPainter *painter, const QRectF &rect) override;
 private:
     // Console

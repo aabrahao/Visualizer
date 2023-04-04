@@ -4,17 +4,11 @@
 #include <QFile>
 #include <QList>
 #include <QPointF>
+#include <QFont>
+#include <QDir>
 
 #include "Json.h"
 #include "Logger.h"
-
-QString sample() {
-    return "/home/bilac/Projects/Visualizer/sample.json";
-};
-
-QString drawing() {
-    return "/home/bilac/Projects/Visualizer/drawing.json";
-};
 
 QGraphicsItem *set(QGraphicsItem *item) {
     item->setFlag(QGraphicsItem::ItemIsMovable, true);
@@ -100,19 +94,21 @@ void SceneBuilder::read(const QJsonObject &object) {
         box->setPos(x, y);
         box->setRotation(a);
     }
+    else if (type == "text") {
+        auto x = value<float>(object,"x");
+        auto y = value<float>(object,"y");
+        auto c = color(object);
+        auto a = value<float>(object, "angle");
+        auto s = value<float>(object, "size");
+        auto t = value<QString>(object, "content");
+        auto text = scene()->addSimpleText(t, QFont("Arial", s));
+        text->setPos(x, y);
+        text->setRotation(a);
+        text->setPen(Qt::NoPen);
+        text->setBrush(QColor(c));
+    }
 }
 
 void SceneBuilder::build() {
-    read( drawing() );
-
-    auto item = set( m_scene->addSimpleText("Hello World!\nOk") );
-    item->setPos(-100, -100);
-    item->setRotation(45);
-
-    QPen pen(QColor(0,255,0));
-    pen.setCosmetic(true);
-
-    pen.setColor(QColor(95,95,95));
-    m_scene->addLine(-50, 0, 50, 0, pen);
-    m_scene->addLine(0, -50, 0, 50, pen);
+    read( filename() );
 }

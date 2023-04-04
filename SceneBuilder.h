@@ -14,6 +14,7 @@ public:
     void build();
     void read(const QString &filename);
     void read(const QJsonObject &object);
+    QString filename() const { return "/home/bilac/Projects/Visualizer/scene.json"; }
 private:
     QGraphicsScene *m_scene;
 };
